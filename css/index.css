@@ -73,6 +73,8 @@ body {
 }
 .articles {
   margin-top: 95px;
+  margin-bottom: 0;
+  padding-bottom: 120px;
 }
 .article {
   margin: 20px 10%;

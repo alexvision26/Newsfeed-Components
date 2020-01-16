@@ -36,18 +36,30 @@ function createMenu(array){
     // newMenu.append(data)
   })
 
-  const navMenu = document.querySelector('.menu-button')
-  navMenu.addEventListener('click', event =>{
-    hbMenu.classList.toggle('menu--open')
+  //  const navMenu = document.querySelector('.menu-button')
+  //  navMenu.addEventListener('click', event =>{
+  //   hbMenu.classList.toggle('menu--open')
+  //  })
+
+  //Jquery Slide Open animation
+
+  $('.articles').click(function() {
+    $(".menu").hide();
+  });
+
+  $(".menu-button").click(function(){
+    $(".menu").slideToggle();
   })
+  
+  $('.menu').click(function(event){
+      event.stopPropagation();
+  });
 
   return hbMenu;
 }
 
 const menu = document.querySelector('.header')
 menu.append(createMenu(menuItems))
-
-console.log(createMenu(menuItems))
 
 // console.log(createMenu(menuItems))
 

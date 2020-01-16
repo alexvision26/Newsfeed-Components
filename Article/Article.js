@@ -139,6 +139,7 @@ function createArticle (title, date, firstPara, secondPara, thirdPara){
   expand.addEventListener('click', event =>{
     article.classList.toggle('article-open')
   })
+  
   return article;
 }
 //Selecting the div where new articles will be placed from the constructor
