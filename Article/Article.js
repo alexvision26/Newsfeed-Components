@@ -85,9 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {//New article entry
+    title: 'Life of a Lambda School student',
+    date: 'Jan 15th, 2020',
+    firstParagraph: `Lambda School is a great structured environment for anyone looking to become a software engineer. They have great support systems in place to help you throughout the entire process. `,
+
+    secondParagraph: `Before Lambda, I was a full time freelance photographer. I still continue to photograph for companies part time. I enrolled at Lambda School to change my career path into something I could see myself doing long term and for more stability. `,
+
+    thirdParagraph: `It wasn't easy to accept the need for change and to refocus my entire life. But it's been a great experience so far and I have become more organized and focused with a solid routine. I often felt setting my own routine was difficult, but a structured environment really helps me stay focused and continue to achieve my goals.`
   }
 ];
-
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
@@ -98,7 +106,50 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
+  */
+function createArticle (title, date, firstPara, secondPara, thirdPara){
+  //Creating HTML Elements
+  const article = document.createElement('div')
+  const artTitle = document.createElement('h2')
+  const artDate = document.createElement('p')
+  const para1 = document.createElement('p')
+  const para2 = document.createElement('p')
+  const para3 = document.createElement('p')
+  const expand = document.createElement('span')
+  //Assigning Elements to parent containers
+  article.append(artTitle);
+  article.append(artTitle)
+  article.append(artDate)
+  article.append(para1)
+  article.append(para2)
+  article.append(para3)
+  article.append(expand)
+  //Assigning Classes/Styling
+  article.classList.add('article')
+  artDate.classList.add('date')
+  expand.classList.add('expandButton')
+  //Assigning Content from Object Array
+  artTitle.textContent = title;
+  artDate.textContent = date;
+  para1.textContent = firstPara;
+  para2.textContent = secondPara;
+  para3.textContent = thirdPara;
+  expand.textContent = 'Expand';
+  //Adding Event Listening to expand span tag
+  expand.addEventListener('click', event =>{
+    article.classList.toggle('article-open')
+  })
+  
+  return article;
+}
+//Selecting the div where new articles will be placed from the constructor
+const newArticle = document.querySelector('.articles')
+// Map loop that assigns the arguments values from the data to the article constructor function
+data.map(e => {
+  newArticle.append(createArticle(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph))
+})
 
+  /*
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
